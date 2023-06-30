@@ -92,7 +92,7 @@ func SetupAdmin(DB *gorm.DB) {
 }
 
 func main() {
-	err := initializers.DB.AutoMigrate(&models.User{}, &models.BillingHistory{}, models.Post{}, models.RechargingCard{})
+	err := initializers.DB.AutoMigrate(&models.User{}, &models.BillingHistory{}, models.Post{})
 	if err != nil {
 		logger.Danger("🚀 Could not migrate User model", err)
 	}
