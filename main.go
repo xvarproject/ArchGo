@@ -26,9 +26,6 @@ var (
 	ChatController      controllers.ChatController
 	ChatRouteController routes.ChatRouteController
 	CreditSystem        *controllers.CreditSystem
-
-	ConversationHistoryController      controllers.ConversationHistoryController
-	ConversationHistoryRouteController routes.ConversationHistoryRouteController
 )
 
 func init() {
@@ -52,9 +49,6 @@ func init() {
 
 	ChatController = controllers.NewChatController(CreditSystem)
 	ChatRouteController = routes.NewChatRouteController(ChatController)
-
-	ConversationHistoryController = controllers.NewConversationHistoryController(initializers.DB)
-	ConversationHistoryRouteController = routes.NewConversationHistoryRouteController(ConversationHistoryController)
 
 	server = gin.Default()
 
@@ -84,6 +78,5 @@ func main() {
 	UserRouteController.UserRoute(router)
 	PostRouteController.PostRoute(router)
 	ChatRouteController.ChatRoute(router)
-	ConversationHistoryRouteController.ConversationHistoryRoute(router)
 	log.Fatal(server.Run(":" + conf.ServerPort))
 }
